@@ -7,9 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Quế Văn Yên - Khát vọng vươn xa') }}</title>
+    <title>{{ config('app.name', 'Phenikaa Fashion Shop - Thời trang sành điệu') }}</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="Quế Văn Yên" />
+    <meta name="author" content="Phenikaa Fashion Shop" />
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com/">
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -345,12 +345,15 @@
         </a>
       </div>
 
-      <a href="#" class="header-tools__item header-tools__cart js-open-aside" data-aside="cartDrawer">
-        <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <use href="#icon_cart" />
-        </svg>
-        <span class="cart-amount d-block position-absolute js-cart-items-count">3</span>
-      </a>
+      <a href="{{ route('cart.index') }}" class="header-tools__item header-tools__cart">
+            <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <use href="#icon_cart" />
+            </svg>
+            @if(Cart::instance('cart')->content()->count() > 0)
+            <span class="cart-amount d-block position-absolute js-cart-items-count">{{ Cart::instance('cart')->content()->count() }}</span>
+            @endif
+          </a>
     </div>
 
     <nav
@@ -359,7 +362,7 @@
         <form action="#" method="GET" class="search-field position-relative mt-4 mb-3">
           <div class="position-relative">
             <input class="search-field__input w-100 border rounded-1" type="text" name="search-keyword"
-              placeholder="Search products" />
+              placeholder="Tìm kiếm sản phẩm" />
             <button class="btn-icon search-popup__submit pb-0 me-2" type="submit">
               <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -388,10 +391,10 @@
               <a href="{{ route('cart.index') }}" class="navigation__link">GIỎ HÀNG</a>
             </li>
             <li class="navigation__item">
-              <a href="about.html" class="navigation__link">GIỚI THIỆU</a>
+              <a href="{{ route('home.about') }}" class="navigation__link">GIỚI THIỆU</a>
             </li>
             <li class="navigation__item">
-              <a href="contact.html" class="navigation__link">LIÊN HỆ</a>
+              <a href="{{ route('home.contact') }}" class="navigation__link">LIÊN HỆ</a>
             </li>
           </ul>
         </div>
@@ -399,11 +402,25 @@
 
       <div class="border-top mt-auto pb-2">
         <div class="customer-links container mt-4 mb-2 pb-1">
-          <svg class="d-inline-block align-middle" width="20" height="20" viewBox="0 0 20 20" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <use href="#icon_user" />
-          </svg>
-          <span class="d-inline-block ms-2 text-uppercase align-middle fw-medium">Tài khoản</span>
+          @auth
+            @if(Auth::user()->utype === 'ADM')
+              <a href="{{ route('admin.index') }}" class="text-decoration-none text-dark">
+                <svg class="d-inline-block align-middle" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <use href="#icon_user" />
+                </svg>
+                <span class="d-inline-block ms-2 text-uppercase align-middle fw-medium">Quản trị viên</span>
+              </a>
+            @else
+              <a href="{{ route('user.index') }}" class="text-decoration-none text-dark">
+                <svg class="d-inline-block align-middle" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <use href="#icon_user" />
+                </svg>
+                <span class="d-inline-block ms-2 text-uppercase align-middle fw-medium">Tài khoản</span>
+              </a>
+            @endif
+          @endauth
         </div>
 
 
@@ -477,7 +494,7 @@
               <a href="{{ route('cart.index') }}" class="navigation__link">GIỎ HÀNG</a>
             </li>
             <li class="navigation__item">
-              <a href="about.html" class="navigation__link">GIỚI THIỆU</a>
+              <a href="{{ route('home.about') }}" class="navigation__link">GIỚI THIỆU</a>
             </li>
             <li class="navigation__item">
               <a href="{{ route('home.contact') }}" class="navigation__link">LIÊN HỆ</a>
@@ -501,7 +518,7 @@
               <form action="#" method="GET" class="search-field container">
                 <p class="text-uppercase text-secondary fw-medium mb-4">Bạn đang cần gì nhỉ?</p>
                 <div class="position-relative">
-                  <input class="search-field__input search-popup__input w-100 fw-medium" type="text" name="search-keyword" id="search-keyword" placeholder="Search products" />
+                  <input class="search-field__input search-popup__input w-100 fw-medium" type="text" name="search-keyword" id="search-keyword" placeholder="Tìm kiếm sản phẩm" />
                   <button class="btn-icon search-popup__submit" type="submit">
                     <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -628,22 +645,22 @@
         <div class="footer-column footer-menu mb-4 mb-lg-0">
           <h6 class="sub-menu__title text-uppercase">Quế Văn Yên</h6>
           <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="about-2.html" class="menu-link menu-link_us-s">Về Chúng tôi</a></li>
-            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Công việc</a></li>
+            <li class="sub-menu__item"><a href="{{ route('home.about') }}" class="menu-link menu-link_us-s">Về Chúng tôi</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Cơ hội nghề nghiệp</a></li>
             <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Tiếp thị liên kết</a></li>
-            <li class="sub-menu__item"><a href="blog_list1.html" class="menu-link menu-link_us-s">Blog</a></li>
-            <li class="sub-menu__item"><a href="contact-2.html" class="menu-link menu-link_us-s">Liên hệ với Chúng tôi</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Tin tức</a></li>
+            <li class="sub-menu__item"><a href="{{ route('home.contact') }}" class="menu-link menu-link_us-s">Liên hệ với Chúng tôi</a></li>
           </ul>
         </div>
 
         <div class="footer-column footer-menu mb-4 mb-lg-0">
           <h6 class="sub-menu__title text-uppercase">Cửa hàng</h6>
           <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="shop2.html" class="menu-link menu-link_us-s">Sản phẩm Bán chạy</a></li>
-            <li class="sub-menu__item"><a href="shop3.html" class="menu-link menu-link_us-s">Accessories</a></li>
-            <li class="sub-menu__item"><a href="shop4.html" class="menu-link menu-link_us-s">Men</a></li>
-            <li class="sub-menu__item"><a href="shop5.html" class="menu-link menu-link_us-s">Women</a></li>
-            <li class="sub-menu__item"><a href="shop1.html" class="menu-link menu-link_us-s">Tất cả sản phẩm</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Sản phẩm Bán chạy</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Phụ kiện</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Nam</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Nữ</a></li>
+            <li class="sub-menu__item"><a href="{{ route('shop.index') }}" class="menu-link menu-link_us-s">Tất cả sản phẩm</a></li>
           </ul>
         </div>
 
@@ -651,10 +668,8 @@
           <h6 class="sub-menu__title text-uppercase">Trợ giúp</h6>
           <ul class="sub-menu__list list-unstyled">
             <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Dịch vụ Khách hàng</a></li>
-            <li class="sub-menu__item"><a href="account_dashboard.html" class="menu-link menu-link_us-s">Tài khoản của tôi</a>
-            </li>
-            <li class="sub-menu__item"><a href="store_location.html" class="menu-link menu-link_us-s">Tìm kiếm cửa hàng</a>
-            </li>
+            <li class="sub-menu__item"><a href="{{ route('user.index') }}" class="menu-link menu-link_us-s">Tài khoản của tôi</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Tìm kiếm cửa hàng</a></li>
             <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Chính sách & Quyền riêng tư</a></li>
             <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Mã giảm giá</a></li>
           </ul>
@@ -663,12 +678,32 @@
         <div class="footer-column footer-menu mb-4 mb-lg-0">
           <h6 class="sub-menu__title text-uppercase">Phân loại</h6>
           <ul class="sub-menu__list list-unstyled">
-            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Shirts</a></li>
-            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Jeans</a></li>
-            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Shoes</a></li>
-            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Bags</a></li>
-            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Tất cả sản phẩm</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Áo sơ mi</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Quần jean</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Giày dép</a></li>
+            <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Túi xách</a></li>
+            <li class="sub-menu__item"><a href="{{ route('shop.index') }}" class="menu-link menu-link_us-s">Tất cả sản phẩm</a></li>
           </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-map">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h6 class="sub-menu__title text-uppercase mb-4">Vị trí của chúng tôi</h6>
+            <div class="map-container" style="height: 400px;">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0964843006747!2d105.78159831476884!3d21.03677878599432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab3b4220c2bd%3A0x1c9e359e2a4f618c!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBQaGVuaWthYQ!5e0!3m2!1svi!2s!4v1647881234567!5m2!1svi!2s" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -716,7 +751,7 @@
             </svg>
             <span class="wishlist-amount d-block position-absolute js-wishlist-count">3</span>
           </div>
-          <span>Yêu thích</span>
+          <span>YÊU THÍCH</span>
         </a>
       </div>
     </div>
