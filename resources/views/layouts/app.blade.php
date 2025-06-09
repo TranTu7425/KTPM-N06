@@ -643,7 +643,7 @@
         </div>
 
         <div class="footer-column footer-menu mb-4 mb-lg-0">
-          <h6 class="sub-menu__title text-uppercase">Quế Văn Yên</h6>
+          <h6 class="sub-menu__title text-uppercase">Phenikaa Fashion Shop</h6>
           <ul class="sub-menu__list list-unstyled">
             <li class="sub-menu__item"><a href="{{ route('home.about') }}" class="menu-link menu-link_us-s">Về Chúng tôi</a></li>
             <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Cơ hội nghề nghiệp</a></li>
@@ -710,7 +710,7 @@
 
     <div class="footer-bottom">
       <div class="container d-md-flex align-items-center">
-        <span class="footer-copyright me-auto">©2025 Quế Văn Yên</span>
+        <span class="footer-copyright me-auto">©2025 Phenikaa Fashion Shop</span>
         <div class="footer-settings d-md-flex align-items-center">
           <a href="privacy-policy.html">Chính sách bảo mật</a> &nbsp;|&nbsp; <a href="terms-conditions.html">Điều khoản &amp;
           Điều kiện</a>
