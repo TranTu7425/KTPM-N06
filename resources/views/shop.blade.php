@@ -185,16 +185,16 @@
             </h5>
             <div id="accordion-filter-price" class="accordion-collapse collapse show border-0"
               aria-labelledby="accordion-heading-price" data-bs-parent="#price-filters">
-              <input class="price-range-slider" type="text" name="price_range" value="" data-slider-min="1"
-                data-slider-max="500" data-slider-step="5" data-slider-value="[{{$min_price}},{{$max_price}}]" data-currency="$" />
+              <input class="price-range-slider" type="text" name="price_range" value="" data-slider-min="1000"
+                data-slider-max="10000000" data-slider-step="100000" data-slider-value="[{{$min_price}},{{$max_price}}]" data-currency="₫" />
               <div class="price-range__info d-flex align-items-center mt-2">
                 <div class="me-auto">
                   <span class="text-secondary">Giá Tối Thiểu: </span>
-                  <span class="price-range__min">$1</span>
+                  <span class="price-range__min">1.000₫</span>
                 </div>
                 <div>
                   <span class="text-secondary">Giá Tối Đa: </span>
-                  <span class="price-range__max">$500</span>
+                  <span class="price-range__max">10.000.000₫</span>
                 </div>
               </div>
             </div>
@@ -359,7 +359,7 @@
                 <a href="{{ route('cart.index') }}" class="pc__atc btn anim_appear-bottom btn position-absolute border-0 text-uppercase fw-medium btn-warning mb-3">Xem Giỏ Hàng</a>
                 @else
                 <form name="addtocart-form" method="post" action="{{ route('cart.add') }}">
-                  @csrf
+                @csrf
                   <input type="hidden" name="id" value="{{ $product->id }}">
                   <input type="hidden" name="quantity" value="1">
                   <input type="hidden" name="name" value="{{ $product->name }}">
@@ -375,9 +375,9 @@
                 <div class="product-card__price d-flex">
                   <span class="money price">
                     @if ($product->sale_price)
-                      <s>{{ $product->regular_price }}</s> ${{ $product->sale_price }}
+                      <s>{{ number_format($product->regular_price) }}₫</s> {{ number_format($product->sale_price) }}₫
                     @else
-                      ${{ $product->regular_price }}
+                      {{ number_format($product->regular_price) }}₫
                     @endif
                   </span>
                 </div>

@@ -56,17 +56,20 @@
         }
 
         #box-content-search .product-item .image {
-            width: 60px;
-            height: 60px;
-            border-radius: 6px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             overflow: hidden;
-            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #box-content-search .product-item .image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%;
         }
 
         #box-content-search .product-item .name {
@@ -92,6 +95,134 @@
             height: 1px;
             background-color: #eee;
             margin: 8px 0;
+        }
+
+        #header {
+          padding-top: 2px;
+          padding-bottom: 2px;
+          background-color: #39539A !important;
+        }
+
+        .header-mobile.header_sticky,
+        .header-mobile__navigation,
+        .header-tools,
+        .navigation {
+          background-color: #39539A !important;
+        }
+
+        .navigation__link {
+          color: white !important;
+        }
+
+        .logo__image {
+          max-width: 150px;
+          height: auto;
+        }
+
+        .footer {
+          background-color: #333 !important;
+          color: white !important;
+        }
+
+        .footer .sub-menu__title {
+          color: white !important;
+        }
+
+        .footer .menu-link {
+          color: #ccc !important;
+        }
+
+        .footer .menu-link:hover {
+          color: white !important;
+        }
+
+        .footer-bottom {
+          background-color: #222 !important;
+          color: white !important;
+        }
+
+        .footer-bottom a {
+          color: #ccc !important;
+        }
+
+        .footer-bottom a:hover {
+          color: white !important;
+        }
+
+        .footer-mobile {
+          background-color: #333 !important;
+        }
+
+        .footer-mobile__link {
+          color: white !important;
+        }
+
+        .header-desk {
+          min-height: 48px;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+
+        /* Đổi màu icon header sang trắng */
+        .header-tools svg,
+        .header-tools__item svg,
+        .header-desk svg,
+        .header-mobile svg,
+        .header-mobile__navigation svg {
+          color: #fff !important;
+          fill: #fff !important;
+          stroke: #fff !important;
+        }
+        .header-tools__item span,
+        .header-tools__item .pr-6px {
+          color: #fff !important;
+        }
+
+        .special-title {
+          color: #39539A !important;
+          transition: color 0.2s;
+          font-weight: bold !important;
+        }
+        .special-title:hover {
+          color: #ff5722 !important;
+        }
+
+        .swiper-wrapper-1 img{
+          border-radius: 50% !important;
+          object-fit: cover !important;
+          width: 100px !important;   /* hoặc kích thước bạn muốn */
+          height: 100px !important;  /* hoặc kích thước bạn muốn */
+        }
+        /* Chỉ bo tròn ảnh ở phần "Có thể bạn cũng thích" */
+        .you-may-like .swiper-wrapper-1 img {
+          border-radius: 50% !important;
+          object-fit: cover !important;
+          width: 100px !important;
+          height: 100px !important;
+        }
+
+        .service-info-bar {
+          background: #1a237e; /* Xanh đậm */
+        }
+        .service-info-bar .fw-bold {
+          font-size: 1.1rem;
+        }
+        .service-info-bar svg {
+          color: #fff;
+          display: block;
+          margin: 0 auto 8px auto;
+        }
+
+        .service-col-border {
+          border-right: 1.5px solid #fff;
+        }
+        @media (max-width: 767.98px) {
+          .service-col-border {
+            border-right: none;
+            border-bottom: 1px solid #fff;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+          }
         }
     </style>
     @stack("styles")
@@ -320,16 +451,6 @@
         fill="currentColor" />
     </symbol>
   </svg>
-  <style>
-    #header {
-      padding-top: 8px;
-      padding-bottom: 8px;
-    }
-
-    .logo__image {
-      max-width: 220px;
-    }
-  </style>
   <div class="header-mobile header_sticky">
     <div class="container d-flex align-items-center h-100">
       <a class="mobile-nav-activator d-block position-relative" href="#">
@@ -584,6 +705,40 @@
     @yield("content")
 
   <hr class="mt-5 text-secondary" />
+  <div class="service-info-bar text-white py-4">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-12 col-md-3 mb-3 mb-md-0 service-col-border">
+          <div>
+            <svg width="32" height="32" fill="currentColor" class="mb-2"><use href="#icon_shield"/></svg>
+            <div class="fw-bold">7 NGÀY ĐỔI SẢN PHẨM NGUYÊN GIÁ</div>
+            <div>Đổi trả sản phẩm trong 7 ngày</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 mb-3 mb-md-0 service-col-border">
+          <div>
+            <svg width="32" height="32" fill="currentColor" class="mb-2"><use href="#icon_headphone"/></svg>
+            <div class="fw-bold">HOTLINE 0336796128</div>
+            <div>8h00 - 17h00, T2 - T7 (Giờ hành chính)</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 mb-3 mb-md-0 service-col-border">
+          <div>
+            <svg width="32" height="32" fill="currentColor" class="mb-2"><use href="#icon_hanger"/></svg>
+            <div class="fw-bold">HỆ THỐNG CỬA HÀNG</div>
+            <div>120 cửa hàng trên toàn hệ thống</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div>
+            <svg width="32" height="32" fill="currentColor" class="mb-2"><use href="#icon_shipping"/></svg>
+            <div class="fw-bold">VẬN CHUYỂN</div>
+            <div>Miễn phí vận chuyển toàn quốc</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <footer class="footer footer_type_2">
     <div class="footer-middle container">
       <div class="row row-cols-lg-5 row-cols-2">
@@ -593,14 +748,14 @@
             <img src="{{ asset('assets/images/logo.png') }}" alt="SurfsideMedia" class="logo_image d-block" />
             </a>
           </div>
-          <p class="footer-address">Thị trấn Mậu A, Huyện Văn Yên, Tỉnh Yên Bái, Việt Nam</p>
+          <p class="footer-address">Trường Đại Học Phenikaa, P. Nguyễn Trác, Yên Nghĩa, Hà Đông, Hà Nội, Việt Nam</p>
           <p class="m-0"><strong class="fw-medium">23010332@st.phenikaa-uni.edu.vn</strong></p>
           <p><strong class="fw-medium">+84 336-796-128</strong></p>
 
           <ul class="social-links list-unstyled d-flex flex-wrap mb-0">
             <li>
               <a href="https://www.facebook.com/tudzntg/" class="footer__social-link d-block" target="_blank">
-                <svg class="svg-icon svg-icon_facebook" width="9" height="15" viewBox="0 0 9 15"
+                <svg class="svg-icon svg-icon_facebook" width="9" height="15"
                   xmlns="http://www.w3.org/2000/svg">
                   <use href="#icon_facebook" />
                 </svg>
@@ -608,7 +763,7 @@
             </li>
             <li>
               <a href="#" class="footer__social-link d-block">
-                <svg class="svg-icon svg-icon_twitter" width="14" height="13" viewBox="0 0 14 13"
+                <svg class="svg-icon svg-icon_twitter" width="14" height="13"
                   xmlns="http://www.w3.org/2000/svg">
                   <use href="#icon_twitter" />
                 </svg>
@@ -616,7 +771,7 @@
             </li>
             <li>
               <a href="https://www.instagram.com/tuanh1379/" class="footer__social-link d-block" target="_blank">
-                <svg class="svg-icon svg-icon_instagram" width="14" height="13" viewBox="0 0 14 13"
+                <svg class="svg-icon svg-icon_instagram" width="14" height="13"
                   xmlns="http://www.w3.org/2000/svg">
                   <use href="#icon_instagram" />
                 </svg>
@@ -624,16 +779,16 @@
             </li>
             <li>
               <a href="https://www.youtube.com/@REWMe" class="footer__social-link d-block" target="_blank">
-                <svg class="svg-icon svg-icon_youtube" width="16" height="11" viewBox="0 0 16 11"
+                <svg class="svg-icon svg-icon_youtube" width="16" height="11"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M15.0117 1.8584C14.8477 1.20215 14.3281 0.682617 13.6992 0.518555C12.5234 0.19043 7.875 0.19043 7.875 0.19043C7.875 0.19043 3.19922 0.19043 2.02344 0.518555C1.39453 0.682617 0.875 1.20215 0.710938 1.8584C0.382812 3.00684 0.382812 5.46777 0.382812 5.46777C0.382812 5.46777 0.382812 7.90137 0.710938 9.07715C0.875 9.7334 1.39453 10.2256 2.02344 10.3896C3.19922 10.6904 7.875 10.6904 7.875 10.6904C7.875 10.6904 12.5234 10.6904 13.6992 10.3896C14.3281 10.2256 14.8477 9.7334 15.0117 9.07715C15.3398 7.90137 15.3398 5.46777 15.3398 5.46777C15.3398 5.46777 15.3398 3.00684 15.0117 1.8584ZM6.34375 7.68262V3.25293L10.2266 5.46777L6.34375 7.68262Z" />
-                </svg>
-              </a>
+              </svg>
+            </a>
             </li>
             <li>
               <a href="#" class="footer__social-link d-block">
-                <svg class="svg-icon svg-icon_pinterest" width="14" height="15" viewBox="0 0 14 15"
+                <svg class="svg-icon svg-icon_pinterest" width="14" height="15"
                   xmlns="http://www.w3.org/2000/svg">
                   <use href="#icon_pinterest" />
                 </svg>
@@ -695,7 +850,7 @@
             <h6 class="sub-menu__title text-uppercase mb-4">Vị trí của chúng tôi</h6>
             <div class="map-container" style="height: 400px;">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.0964843006747!2d105.78159831476884!3d21.03677878599432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab3b4220c2bd%3A0x1c9e359e2a4f618c!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBQaGVuaWthYQ!5e0!3m2!1svi!2s!4v1647881234567!5m2!1svi!2s" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.7485384583847!2d105.74611147597663!3d20.962611180670315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313452efff394ce3%3A0x391a39d4325be464!2zVHLGsOG7nW5nIMSQ4bqhaSBI4buNYyBQaGVuaWthYQ!5e0!3m2!1svi!2s!4v1749476813130!5m2!1svi!2s" 
                 width="100%" 
                 height="100%" 
                 style="border:0;" 

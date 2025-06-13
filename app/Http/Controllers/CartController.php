@@ -78,7 +78,7 @@ class CartController extends Controller
         if(isset($coupon_code)) {
             $coupon = Coupon::where('code', $coupon_code)->where('expiry_date', '>=', Carbon::today())->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
             if(!$coupon) {
-                return redirect()->back()->with('error', 'Invalid coupon code');
+                return redirect()->back()->with('error', 'Mã giảm giá không hợp lệ');
             }
             else {
                 Session::put('coupon', [
@@ -88,11 +88,11 @@ class CartController extends Controller
                     'cart_value' => $coupon->cart_value,
                 ]);
                 $this->calculateDiscount();
-                return redirect()->back()->with('success', 'Coupon applied successfully');
+                return redirect()->back()->with('success', 'Mã giảm giá đã được áp dụng thành công');
             }
         }
         else {
-            return redirect()->back()->with('error', 'Invalid coupon code');
+            return redirect()->back()->with('error', 'Mã giảm giá không hợp lệ');
         }
     }
 
@@ -100,22 +100,25 @@ class CartController extends Controller
     {
         $discount = 0;
         if(Session::has('coupon')) {
+            $subtotal = (float) Cart::instance('cart')->subtotal();
+            $couponValue = (float) Session::get('coupon')['value'];
+            
             if(Session::get('coupon')['type'] == 'fixed') {
-                $discount = Session::get('coupon')['value'];
+                $discount = $couponValue;
             }
             else {
-                $discount = Cart::instance('cart')->subtotal() * Session::get('coupon')['value'] / 100;
+                $discount = $subtotal * $couponValue / 100;
             }
 
-            $subtotalAfterDiscount = Cart::instance('cart')->subtotal() - $discount;
-            $taxAfterDiscount = ($subtotalAfterDiscount * config('cart.tax')) / 100;
+            $subtotalAfterDiscount = $subtotal - $discount;
+            $taxAfterDiscount = ($subtotalAfterDiscount * (float) config('cart.tax')) / 100;
             $totalAfterDiscount = $subtotalAfterDiscount + $taxAfterDiscount;
 
             Session::put('discounts', [
-                'discount' => number_format(floatval($discount), 2, '.', ''),
-                'subtotal' => number_format(floatval($subtotalAfterDiscount), 2, '.', ''),
-                'tax' => number_format(floatval($taxAfterDiscount), 2, '.', ''),
-                'total' => number_format(floatval($totalAfterDiscount), 2, '.', ''),
+                'discount' => number_format($discount, 2, '.', ''),
+                'subtotal' => number_format($subtotalAfterDiscount, 2, '.', ''),
+                'tax' => number_format($taxAfterDiscount, 2, '.', ''),
+                'total' => number_format($totalAfterDiscount, 2, '.', ''),
             ]);
         }
     }
@@ -124,7 +127,7 @@ class CartController extends Controller
     {
         Session::forget('coupon');
         Session::forget('discounts');
-        return redirect()->back()->with('success', 'Coupon removed successfully');
+        return redirect()->back()->with('success', 'Mã giảm giá đã được xóa thành công');
     }
 
     public function checkout()
@@ -172,10 +175,10 @@ class CartController extends Controller
 
         $order = new Order();
         $order->user_id = $user_id;
-        $order->subtotal = Session::get('checkout')['subtotal'];
-        $order->discount = Session::get('checkout')['discount'];
-        $order->tax = Session::get('checkout') ['tax'];
-        $order->total = Session::get('checkout')['total'];
+        $order->subtotal = str_replace(',', '', Session::get('checkout')['subtotal']);
+        $order->discount = str_replace(',', '', Session::get('checkout')['discount']);
+        $order->tax = str_replace(',', '', Session::get('checkout')['tax']);
+        $order->total = str_replace(',', '', Session::get('checkout')['total']);
         $order->name = $address->name;
         $order->phone = $address->phone;
         $order->locality = $address->locality;
@@ -192,7 +195,7 @@ class CartController extends Controller
             $order_item->order_id = $order->id;
             $order_item->product_id = $item->id;
             $order_item->quantity = $item->qty;
-            $order_item->price = $item->price;
+            $order_item->price = str_replace(',', '', $item->price);
             $order_item->save();
         }
 

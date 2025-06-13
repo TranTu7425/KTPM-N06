@@ -245,7 +245,7 @@
                 </div>
                 
               </div>
-              <button class="btn btn-primary btn-checkout">ĐẶT HÀNG</button>
+              <button class="btn btn-primary btn-checkout" style="background-color: #ff4500 !important; border-color: #ff4500 !important;">ĐẶT HÀNG</button>
             </div>
           </div>
         </div>

@@ -8,6 +8,20 @@
   .text-danger {
     color: #dc3545;
   }
+  
+  .btn-checkout {
+    background-color: #ff4d2e !important;
+    border-color: #ff4d2e !important;
+    color: white !important;
+    transition: all 0.3s ease;
+  }
+
+  .btn-checkout:hover {
+    background-color: #e63946 !important;
+    border-color: #e63946 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
 </style>
 <main class="pt-90">
     <div class="mb-4 pb-4"></div>
@@ -55,7 +69,7 @@
               <tr>
                 <td>
                   <div class="shopping-cart__product-item">
-                    <img loading="lazy" src="{{ asset('uploads/products/thumbnails') }}/{{ $item->model->image }}" width="120" height="120" alt="" />
+                    <img loading="lazy" src="{{ $item->model ? asset('uploads/products/thumbnails') . '/' . $item->model->image : asset('images/no-image.png') }}" width="120" height="120" alt="" />
                   </div>
                 </td>
                 <td>
@@ -210,9 +224,9 @@
         </div>
         @else
             <div class="row">
-                <div class="col-md-12 text-center pt-5 bp-5>
-                    <p>Không có sản phẩm nào trong giỏ hàng</p>
-                    <a href="{{ route('shop.index') }}" class="btn btn-info">Tiếp tục mua sắm</a>
+                <div class="col-md-12 text-center py-5">
+                    <p class="mb-4">Không có sản phẩm nào trong giỏ hàng</p>
+                    <a href="{{ route('shop.index') }}" class="btn btn-primary" style="background-color: #ff4d2e; border-color: #ff4d2e;">Tiếp tục mua sắm</a>
                 </div>
             </div>
         @endif
