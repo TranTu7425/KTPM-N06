@@ -58,6 +58,7 @@
 
     .form-floating {
         margin-bottom: 25px;
+        position: relative;
     }
 
     .form-control {
@@ -67,6 +68,7 @@
         font-size: 1rem;
         transition: all 0.3s ease;
         height: auto;
+        margin-bottom: 5px;
     }
 
     .form-control:focus {
@@ -78,12 +80,37 @@
         color: #666;
         padding: 15px;
         font-size: 1rem;
+        pointer-events: none;
     }
 
     .form-floating>.form-control:focus~label,
     .form-floating>.form-control:not(:placeholder-shown)~label {
         transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
         color: #ff5722;
+        background: #fff;
+        padding: 0 6px;
+        z-index: 2;
+        left: 8px;
+        top: 2px;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .text-danger {
+        color: #d32f2f !important;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        display: block;
+        font-weight: 500;
+        position: relative;
+        padding-left: 5px;
+    }
+
+    textarea.form-control {
+        min-height: 180px;
+        resize: vertical;
+        padding: 15px;
+        margin-bottom: 5px;
     }
 
     .btn-primary {
@@ -119,43 +146,128 @@
         text-align: center;
     }
 
-    .text-danger {
-        color: #d32f2f !important;
-        font-size: 0.9rem;
-        margin-top: 8px;
-        display: block;
-        font-weight: 500;
-    }
-
-    textarea.form-control {
-        min-height: 180px;
-        resize: vertical;
-        padding: 15px;
-    }
-
-    @media (max-width: 768px) {
+    /* Tablet */
+    @media (max-width: 991px) {
         .contact-us {
-            padding: 30px 20px;
-            margin: 20px 15px;
+            padding: 40px 30px;
+            margin: 30px 20px;
         }
         
         .page-title {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
+            font-size: 2.4rem;
         }
 
         .contact-us__form {
-            padding: 25px;
+            padding: 30px;
         }
 
         .contact-us__form h3 {
             font-size: 1.8rem;
+        }
+
+        .form-floating {
+            margin-bottom: 20px;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .contact-us {
+            padding: 25px 15px;
+            margin: 20px 10px;
+            border-radius: 15px;
+        }
+        
+        .page-title {
+            font-size: 1.8rem;
             margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .contact-us__form {
+            padding: 20px;
+        }
+
+        .contact-us__form h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-floating {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            padding: 12px;
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .form-floating label {
+            padding: 12px;
+            font-size: 0.95rem;
+        }
+
+        .text-danger {
+            font-size: 0.85rem;
+            margin-top: 3px;
         }
 
         .btn-primary {
-            padding: 12px 30px;
+            padding: 12px 25px;
             font-size: 1rem;
+            max-width: 100%;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+        }
+
+        .alert-success {
+            padding: 15px;
+            font-size: 1rem;
+        }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 480px) {
+        .contact-us {
+            padding: 20px 10px;
+            margin: 15px 5px;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-us__form {
+            padding: 15px;
+        }
+
+        .contact-us__form h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .form-floating {
+            margin-bottom: 12px;
+        }
+
+        .form-control {
+            padding: 10px;
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+
+        .form-floating label {
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        .text-danger {
+            font-size: 0.8rem;
+            margin-top: 2px;
         }
     }
 </style>

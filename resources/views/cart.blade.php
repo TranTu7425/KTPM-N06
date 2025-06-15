@@ -82,7 +82,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="shopping-cart__product-price">${{ $item->price }}</span>
+                  <span class="shopping-cart__product-price">{{ $item->price }}đ</span>
                 </td>
                 <td>
                   <div class="qty-control position-relative">
@@ -101,7 +101,7 @@
                   </div>
                 </td>
                 <td>
-                  <span class="shopping-cart__subtotal">${{ $item->subTotal() }}</span>
+                  <span class="shopping-cart__subtotal">{{ $item->subTotal() }}đ</span>
                 </td>
                 <td>
                   <form method="POST" action="{{ route('cart.remove.item', ['rowId' => $item->rowId]) }}">

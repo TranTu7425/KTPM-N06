@@ -220,7 +220,7 @@
             <div class="swiper-slide">
               <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
                 <div class="slide-split_text position-relative d-flex align-items-center"
-                  style="background-color: #f5e6e0;">
+                  style="background-color:rgb(0, 217, 255);">
                   <div class="slideshow-text container p-3 p-xl-5">
                     <h2
                       class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
@@ -229,7 +229,7 @@
                   </div>
                 </div>
                 <div class="slide-split_media position-relative">
-                  <div class="slideshow-bg" style="background-color: #f5e6e0;">
+                  <div class="slideshow-bg" style="background-color:rgb(0, 217, 255);">
                     <img loading="lazy" src="{{ asset('assets/images/shop/shop_banner1.jpg') }}" width="630" height="450"
                       alt="Phụ kiện nữ" class="slideshow-bg__img object-fit-cover" />
                   </div>
@@ -240,16 +240,16 @@
             <div class="swiper-slide">
               <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
                 <div class="slide-split_text position-relative d-flex align-items-center"
-                  style="background-color: #f5e6e0;">
+                  style="background-color:rgb(0, 217, 255);">
                   <div class="slideshow-text container p-3 p-xl-5">
                     <h2
                       class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
                       Bản lĩnh <br /><strong>Phái mạnh</strong></h2>
-                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Khí chất mạnh mẽ, độc lập, tự tin, tràn đầy năng lượng để đối mặt với mọi thử thách.</h6>
+                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Một khí chất mạnh mẽ toát lên từ bên trong – sự độc lập không cần phải chứng minh, sự tự tin không ngần ngại ánh nhìn của thế giới. Là tinh thần kiên định vượt lên mọi thử thách với ý chí không thể khuất phục. </h6>
                   </div>
                 </div>
                 <div class="slide-split_media position-relative">
-                  <div class="slideshow-bg" style="background-color: #f5e6e0;">
+                  <div class="slideshow-bg" style="background-color:rgb(0, 217, 255);">
                     <img loading="lazy" src="{{ asset('assets/images/shop/shop_banner2.jpg') }}" width="630" height="450"
                       alt="Phụ kiện nữ" class="slideshow-bg__img object-fit-cover" />
                   </div>
@@ -260,7 +260,7 @@
             <div class="swiper-slide">
               <div class="slide-split h-100 d-block d-md-flex overflow-hidden">
                 <div class="slide-split_text position-relative d-flex align-items-center"
-                  style="background-color: #f5e6e0;">
+                  style="background-color:rgb(0, 217, 255);">
                   <div class="slideshow-text container p-3 p-xl-5">
                     <h2
                       class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
@@ -269,7 +269,7 @@
                   </div>
                 </div>
                 <div class="slide-split_media position-relative">
-                  <div class="slideshow-bg" style="background-color: #f5e6e0;">
+                  <div class="slideshow-bg" style="background-color:rgb(0, 217, 255);">
                     <img loading="lazy" src="{{ asset('assets/images/shop/shop_banner3.jpg') }}" width="630" height="450"
                       alt="Phụ kiện nữ" class="slideshow-bg__img object-fit-cover" />
                   </div>
