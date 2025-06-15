@@ -224,6 +224,10 @@
             padding-bottom: 16px;
           }
         }
+        .footer-mobile__link span {
+          white-space: nowrap;
+          font-size: 10px;
+        }
     </style>
     @stack("styles")
 </head>
@@ -828,6 +832,15 @@
             <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Chính sách & Quyền riêng tư</a></li>
             <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Mã giảm giá</a></li>
           </ul>
+          <div class="footer-account mt-2">
+            @guest
+                <a href="{{ route('login') }}" class="menu-link menu-link_us-s">Đăng nhập</a>
+            @else
+                <a href="{{ Auth::user()->utype == 'ADM' ? route('admin.index') : route('user.index') }}" class="menu-link menu-link_us-s">
+                    {{ Auth::user()->name }}
+                </a>
+            @endguest
+          </div>
         </div>
 
         <div class="footer-column footer-menu mb-4 mb-lg-0">
@@ -877,37 +890,54 @@
 
   <footer class="footer-mobile container w-100 px-5 d-md-none bg-body">
     <div class="row text-center">
-      <div class="col-4">
-        <a href="{{ route('home.index') }}{" class="footer-mobile__link d-flex flex-column align-items-center">
+      <div class="col-3">
+        <a href="{{ route('home.index') }}" class="footer-mobile__link d-flex flex-column align-items-center">
           <svg class="d-block" width="18" height="18" viewBox="0 0 18 18" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <use href="#icon_home" />
           </svg>
-          <span>TRANG CHỦ</span>
+          <span>Trang chủ</span>
         </a>
       </div>
-
-      <div class="col-4">
+      <div class="col-3">
         <a href="{{ route('shop.index') }}" class="footer-mobile__link d-flex flex-column align-items-center">
           <svg class="d-block" width="18" height="18" viewBox="0 0 18 18" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <use href="#icon_hanger" />
           </svg>
-          <span>CỬA HÀNG</span>
+          <span>Cửa hàng</span>
         </a>
       </div>
-
-      <div class="col-4">
+      <div class="col-3">
         <a href="{{ route('wishlist.index') }}" class="footer-mobile__link d-flex flex-column align-items-center">
           <div class="position-relative">
             <svg class="d-block" width="18" height="18" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <use href="#icon_heart" />
             </svg>
-            <span class="wishlist-amount d-block position-absolute js-wishlist-count">3</span>
+            @if(Cart::instance('wishlist')->content()->count() > 0)
+            <span class="wishlist-amount d-block position-absolute js-cart-items-count">{{ Cart::instance('wishlist')->content()->count() }}</span>
+            @endif
           </div>
-          <span>YÊU THÍCH</span>
+            <span>Yêu thích</span>
         </a>
+      </div>
+      <div class="col-3">
+        @guest
+          <a href="{{ route('login') }}" class="footer-mobile__link d-flex flex-column align-items-center">
+            <svg class="d-block" width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <use href="#icon_user" />
+            </svg>
+            <span>Đăng nhập</span>
+          </a>
+        @else
+          <a href="{{ Auth::user()->utype == 'ADM' ? route('admin.index') : route('user.index') }}" class="footer-mobile__link d-flex flex-column align-items-center">
+            <svg class="d-block" width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <use href="#icon_user" />
+            </svg>
+            <span>{{ Auth::user()->name }}</span>
+          </a>
+        @endguest
       </div>
     </div>
   </footer>

@@ -224,13 +224,13 @@
                   <div class="slideshow-text container p-3 p-xl-5">
                     <h2
                       class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
-                      Phụ Kiện <br /><strong>NỮ</strong></h2>
-                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Phụ kiện là cách tốt nhất để cập nhật diện mạo của bạn. Thêm một chút phong cách với những mẫu mã và màu sắc mới, hoặc chọn những món đồ thời trang vượt thời gian.</h6>
+                      Tháng năm <br /><strong>Rực rỡ</strong></h2>
+                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Tháng năm rực rỡ, những màu sắc đậm đà, những đường nét rõ ràng, những hình ảnh đầy sức sống. Những năm tháng của tuổi trẻ mà mọi người đều có thể tự tin, tự hào với những gì mình đang làm và đang sống.</h6>
                   </div>
                 </div>
                 <div class="slide-split_media position-relative">
                   <div class="slideshow-bg" style="background-color: #f5e6e0;">
-                    <img loading="lazy" src="assets/images/shop/shop_banner3.jpg" width="630" height="450"
+                    <img loading="lazy" src="{{ asset('assets/images/shop/shop_banner1.jpg') }}" width="630" height="450"
                       alt="Phụ kiện nữ" class="slideshow-bg__img object-fit-cover" />
                   </div>
                 </div>
@@ -244,13 +244,13 @@
                   <div class="slideshow-text container p-3 p-xl-5">
                     <h2
                       class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
-                      Phụ Kiện <br /><strong>NỮ</strong></h2>
-                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Phụ kiện là cách tốt nhất để cập nhật diện mạo của bạn. Thêm một chút phong cách với những mẫu mã và màu sắc mới, hoặc chọn những món đồ thời trang vượt thời gian.</h6>
+                      Bản lĩnh <br /><strong>Phái mạnh</strong></h2>
+                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Khí chất mạnh mẽ, độc lập, tự tin, tràn đầy năng lượng để đối mặt với mọi thử thách.</h6>
                   </div>
                 </div>
                 <div class="slide-split_media position-relative">
                   <div class="slideshow-bg" style="background-color: #f5e6e0;">
-                    <img loading="lazy" src="assets/images/shop/shop_banner3.jpg" width="630" height="450"
+                    <img loading="lazy" src="{{ asset('assets/images/shop/shop_banner2.jpg') }}" width="630" height="450"
                       alt="Phụ kiện nữ" class="slideshow-bg__img object-fit-cover" />
                   </div>
                 </div>
@@ -264,13 +264,13 @@
                   <div class="slideshow-text container p-3 p-xl-5">
                     <h2
                       class="text-uppercase section-title fw-normal mb-3 animate animate_fade animate_btt animate_delay-2">
-                      Phụ Kiện <br /><strong>NỮ</strong></h2>
-                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Phụ kiện là cách tốt nhất để cập nhật diện mạo của bạn. Thêm một chút phong cách với những mẫu mã và màu sắc mới, hoặc chọn những món đồ thời trang vượt thời gian.</h6>
+                      Duyên dáng <br /><strong>Nét xuân</strong></h2>
+                    <p class="mb-0 animate animate_fade animate_btt animate_delay-5">Tôn vinh nét đẹp của người phụ nữ Việt Nam, hãy cùng nhau tri ân những người phụ nữ đã và đang làm nên sự đẹp đẽ của Đất nước.</h6>
                   </div>
                 </div>
                 <div class="slide-split_media position-relative">
                   <div class="slideshow-bg" style="background-color: #f5e6e0;">
-                    <img loading="lazy" src="assets/images/shop/shop_banner3.jpg" width="630" height="450"
+                    <img loading="lazy" src="{{ asset('assets/images/shop/shop_banner3.jpg') }}" width="630" height="450"
                       alt="Phụ kiện nữ" class="slideshow-bg__img object-fit-cover" />
                   </div>
                 </div>

@@ -76,7 +76,11 @@ class CartController extends Controller
     {
         $coupon_code = $request->coupon_code;
         if(isset($coupon_code)) {
-            $coupon = Coupon::where('code', $coupon_code)->where('expiry_date', '>=', Carbon::today())->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
+            $subtotal = (float) str_replace(',', '', Cart::instance('cart')->subtotal());
+            $coupon = Coupon::where('code', $coupon_code)
+                ->where('expiry_date', '>=', Carbon::today())
+                ->where('cart_value', '<=', $subtotal)
+                ->first();
             if(!$coupon) {
                 return redirect()->back()->with('error', 'Mã giảm giá không hợp lệ');
             }
@@ -100,17 +104,17 @@ class CartController extends Controller
     {
         $discount = 0;
         if(Session::has('coupon')) {
-            $subtotal = (float) Cart::instance('cart')->subtotal();
+            $subtotal = (float) str_replace(',', '', Cart::instance('cart')->subtotal());
             $couponValue = (float) Session::get('coupon')['value'];
             
             if(Session::get('coupon')['type'] == 'fixed') {
-                $discount = $couponValue;
+                $discount = min($couponValue, $subtotal);
             }
             else {
                 $discount = $subtotal * $couponValue / 100;
             }
 
-            $subtotalAfterDiscount = $subtotal - $discount;
+            $subtotalAfterDiscount = max($subtotal - $discount, 0);
             $taxAfterDiscount = ($subtotalAfterDiscount * (float) config('cart.tax')) / 100;
             $totalAfterDiscount = $subtotalAfterDiscount + $taxAfterDiscount;
 
